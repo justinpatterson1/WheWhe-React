@@ -9,6 +9,11 @@ button
   border: 5px solid black;
 }
 
+.chosenBtn
+{
+  border-color: red;
+}
+
 button:hover
 {
   border: 5px solid red;
