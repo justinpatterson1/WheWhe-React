@@ -37,7 +37,7 @@ const MarkButtons = () => {
                     <button disabled={disablebutton()} value={19} onClick={(event)=>{setMark([...mark,event.target.value])}}>19</button>
     <button disabled={disablebutton()} value={20} onClick={(event)=>{setMark([...mark,event.target.value])}}>20</button>*/}
                     {
-                       buttons.map((button)=>(<Buttons key={button.id} id={button.id} num={button.value}/>)) 
+                       buttons.map((button)=>(<Buttons key={button.id} id={button.id} num={button.value} borderColor={button.color}/>)) 
                     }
                 </div>
                 <div class="grid col-2">

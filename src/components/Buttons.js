@@ -47,10 +47,14 @@ const Buttons = (props) => {
 
                 getButton.enabled = true;
             
+                getButton.color = "";
+                setButtons(allButtons);
           
         }
-
-        
+        else{
+            buttonChoosen(amt);
+        }
+     
       
     }
 
@@ -60,10 +64,9 @@ const Buttons = (props) => {
 
     const currentButton = button.find(btn=>btn.id === id);
 
-    if(currentButton.enabled === 'false')
-    {
-        return true;
-    }
+    currentButton.color = 'chosenBtn';
+
+    setButtons(button);
   }
 
 
@@ -98,7 +101,7 @@ const Buttons = (props) => {
 
     return (
         
-            <button className={buttonChoosen(props.num)===true?'chosenBtn':''} value={props.num} onClick={(event)=>
+            <button className={props.borderColor} value={props.num} onClick={(event)=>
                 {
                     deleteMark(props.num);
 
@@ -113,7 +116,7 @@ const Buttons = (props) => {
 
                     disablebutton(props.num);
 
-                   
+                  // buttonChoosen(props.num);
                    
 
                     
