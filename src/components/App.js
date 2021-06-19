@@ -5,11 +5,15 @@ import DisplayBox from "../components/DisplayBox";
 import Header from "../components/Header";
 import MarkContext from '../context/MarkContext';
 import ButtonsContext from '../context/ButtonsContext';
+import ScreenContext from '../context/ScreenContext';
+import CashContext from '../context/CashContext';
 import{useState} from 'react';
 
 
 function App() {
 
+  const [screen,setScreen] = useState({visible:false});
+  const [cash,setCash] = useState(0);
   const [mark, setMark] = useState([]);
   const [buttons,setButtons]=useState([
     {
@@ -134,6 +138,8 @@ function App() {
     }
 
   ])
+
+ 
   return (
     <div id="body">
       <MarkContext.Provider value={{mark,setMark}}>
@@ -141,12 +147,23 @@ function App() {
       
         <Header/>
         <div className="grid col-3">
+          <CashContext.Provider value={{cash,setCash}}>
+
               <CashButtons/>
-          <ButtonsContext.Provider value={{buttons,setButtons}}>
-              <MarkButtons/>
-          </ButtonsContext.Provider>
+
+              <ScreenContext.Provider value={{screen,setScreen}}>
+
+                     <ButtonsContext.Provider value={{buttons,setButtons}}>
               
+                                   <MarkButtons/>
+              
+                      </ButtonsContext.Provider>
+
+              </ScreenContext.Provider>
+
               <DisplayBox/>
+
+          </CashContext.Provider>
         </div>
         </MarkContext.Provider>
     </div>

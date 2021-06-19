@@ -2,14 +2,24 @@ import React from 'react'
 import { useContext } from 'react'
 import MarkContext from '../context/MarkContext'
 import ButtonsContext from '../context/ButtonsContext'
-import { filter } from 'bluebird'
+import ScreenContext from '../context/ScreenContext'
+
 
 
 const Buttons = (props) => {
 
     const{mark,setMark} = useContext(MarkContext);
     const{buttons,setButtons} = useContext(ButtonsContext);
+    const {screen,setScreen} = useContext(ScreenContext);
 
+    //Set the screen
+    const hideMark = ()=>
+    {
+        const screenBlock = {...screen};
+        screenBlock.visible = true;
+        setScreen(screenBlock);
+    }
+    //Checks to see if mark has already been selected, if selected set mark
     const addMark = (i)=>{
         if(mark.length != 5)
         {
@@ -18,11 +28,14 @@ const Buttons = (props) => {
             if(!markCheck)
             {
                 setMark([...mark,i]);
+
+                hideMark();
             }
             
         }
         
     }
+
 
     //Checks to see if button was pressed, if button was pressed it deletes the mark if button is pressed again.
     
@@ -86,17 +99,7 @@ const Buttons = (props) => {
    
     } 
 
-    //Function disables the button
-    const disable= (amt)=>
-    {
-        const btn = buttons.find((button)=>{return button.id === amt})
-        if(btn.enabled === false)
-        {
-            return true
-        }
-
-    }
-  
+   
 
 
     return (
@@ -107,7 +110,8 @@ const Buttons = (props) => {
 
                     const newMark={
                         id:(Math.floor(Math.random()*1000)+1),
-                        amount:parseInt(event.target.value)
+                        amount:parseInt(event.target.value),
+                        cash:0
                     }
 
                     
@@ -116,9 +120,11 @@ const Buttons = (props) => {
 
                     disablebutton(props.num);
 
+                    
+
                   // buttonChoosen(props.num);
                    
-
+                    console.log(screen)
                     
                     
                 }

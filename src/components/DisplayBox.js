@@ -7,12 +7,16 @@ const DisplayBox = () => {
     const {mark} = useContext(MarkContext);
     return (
         <div>
-            <div id="display-box">
+            <div id="display-box" className="grid col-1">
                 Numbers Selected:
                 {
                   mark.map((mark)=>(<Mark key={mark.id} amount={mark.amount}/> ))
                 }
+                <div id="total-div">
+                    Total:
+                </div>
             </div>
+            
         </div>
     )
 }

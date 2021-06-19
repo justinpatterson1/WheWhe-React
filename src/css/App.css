@@ -106,7 +106,31 @@ img
   margin-top: 10px;
 }
 
+.hide{
+  display: none;
+}
+
 #cash
 {
   margin: 0 auto;
+}
+
+#btn-screen
+{
+  background-color: chartreuse;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#mark-div
+{
+  position: relative;
+}
+
+#total-div
+{
+  align-self: end;
+  background-color: cornsilk;
+  padding-bottom: 30px;
 }

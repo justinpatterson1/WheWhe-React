@@ -1,15 +1,46 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import lotteryBall from "../images/lotteryBall.png"
+import CashContext from '../context/CashContext'
 
 const CashButton = () => {
+
+    const{cash,setCash} = useContext(CashContext);
+
+    const addCash = (val)=>
+    {
+        let cashAmount = parseInt(cash);
+         cashAmount = cashAmount + parseInt(val);
+
+         setCash(cashAmount);
+         alert(cash)
+    }
+
     return (
         <div id="cash">
             <div><img src={lotteryBall}/> </div>
                 <div id="cash-div" className="grid col-2">
-                    <button className="cashBtn">$1</button>
-                    <button className="cashBtn">$5</button>
-                    <button className="cashBtn">$10</button>
-                    <button className="cashBtn">$20</button>
+                    <button value='1' className="cashBtn" onClick={(event)=>{
+                        addCash(parseInt(event.target.value))
+                       
+                    }}>$1</button>
+
+                    <button value='5' className="cashBtn" onClick={(event)=>{
+
+                        addCash(parseInt(event.target.value))
+                        
+                    }}>$5</button>
+
+                    <button value='10' className="cashBtn" onClick={(event)=>{
+
+                           addCash(parseInt(event.target.value))
+
+                    }}>$10</button>
+
+                    <button value='20' className="cashBtn" onClick={(event)=>{
+
+                           addCash(parseInt(event.target.value))
+                           
+                    }}>$20</button>
                 </div>
         </div>
     )

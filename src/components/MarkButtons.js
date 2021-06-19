@@ -2,20 +2,24 @@ import React,{useContext} from 'react';
 import MarkContext from '../context/MarkContext';
 import Buttons from '../components/Buttons';
 import ButtonsContext from '../context/ButtonsContext'
+import ScreenContext from '../context/ScreenContext';
+
 
 
 const MarkButtons = () => {
+    const {screen,setScreen} = useContext(ScreenContext);
     const {buttons} = useContext(ButtonsContext);
     const{mark,setMark} = useContext(MarkContext);
+    
+    
 
   
-
-  console.log(mark)
    
 
     return (
         <div id="mark-div">
-                  <div id="button-div" class="grid col-4">
+                  <div id="btn-screen"  className={screen.visible == true?' ':'hide'}></div>
+                  <div id="button-div" className="grid col-4">
                    {/* <button disabled={disablebutton()} value={1} onClick={(event)=>{setMark([...mark,event.target.value])}}>1</button>
                     <button disabled={disablebutton()} value={2} onClick={(event)=>{setMark([...mark,event.target.value])}}>2</button>
                     <button disabled={disablebutton()} value={3} onClick={(event)=>{setMark([...mark,event.target.value])}}>3</button>
@@ -40,9 +44,9 @@ const MarkButtons = () => {
                        buttons.map((button)=>(<Buttons key={button.id} id={button.id} num={button.value} borderColor={button.color}/>)) 
                     }
                 </div>
-                <div class="grid col-2">
-                    <button class="actionBtn">CASH</button>
-                    <button class="actionBtn">CLEAR</button>
+                <div className="grid col-2">
+                    <button className="actionBtn">CASH</button>
+                    <button className="actionBtn">CLEAR</button>
                 </div>
         </div>
     )
