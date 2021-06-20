@@ -7,6 +7,8 @@ import MarkContext from '../context/MarkContext';
 import ButtonsContext from '../context/ButtonsContext';
 import ScreenContext from '../context/ScreenContext';
 import CashContext from '../context/CashContext';
+import Modal from '../components/Modal';
+import ModalContext from '../context/ModalContext';
 import{useState} from 'react';
 
 
@@ -144,16 +146,14 @@ function App() {
     <div id="body">
       <MarkContext.Provider value={{mark,setMark}}>
 
-      
+        <Modal/>
         <Header/>
         <div className="grid col-3">
           <CashContext.Provider value={{cash,setCash}}>
-
-              <CashButtons/>
-
               <ScreenContext.Provider value={{screen,setScreen}}>
+                    <CashButtons/>
 
-                     <ButtonsContext.Provider value={{buttons,setButtons}}>
+                       <ButtonsContext.Provider value={{buttons,setButtons}}>
               
                                    <MarkButtons/>
               

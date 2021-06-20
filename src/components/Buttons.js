@@ -29,10 +29,12 @@ const Buttons = (props) => {
             {
                 setMark([...mark,i]);
 
-                hideMark();
+            
             }
             
         }
+      
+       
         
     }
 
@@ -73,13 +75,17 @@ const Buttons = (props) => {
 
   const buttonChoosen = (id)=>
   {
-    const button = [...buttons];
+    if(mark.length !=5)
+    {
+        const button = [...buttons];
 
-    const currentButton = button.find(btn=>btn.id === id);
-
-    currentButton.color = 'chosenBtn';
-
-    setButtons(button);
+        const currentButton = button.find(btn=>btn.id === id);
+    
+        currentButton.color = 'chosenBtn';
+    
+        setButtons(button);
+    }
+   
   }
 
 
@@ -99,7 +105,7 @@ const Buttons = (props) => {
    
     } 
 
-   
+  
 
 
     return (
@@ -111,7 +117,7 @@ const Buttons = (props) => {
                     const newMark={
                         id:(Math.floor(Math.random()*1000)+1),
                         amount:parseInt(event.target.value),
-                        cash:0
+                        
                     }
 
                     

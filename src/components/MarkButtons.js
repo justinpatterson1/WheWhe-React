@@ -3,16 +3,36 @@ import MarkContext from '../context/MarkContext';
 import Buttons from '../components/Buttons';
 import ButtonsContext from '../context/ButtonsContext'
 import ScreenContext from '../context/ScreenContext';
+import CashContext from '../context/CashContext';
+
 
 
 
 const MarkButtons = () => {
     const {screen,setScreen} = useContext(ScreenContext);
-    const {buttons} = useContext(ButtonsContext);
+    const {buttons,setButtons} = useContext(ButtonsContext);
     const{mark,setMark} = useContext(MarkContext);
+    const {cash,setCash} = useContext(CashContext);
     
     
+    const totalReset = ()=>
+    {
+        setMark([]);
+        setCash(0);
+        buttonReset();
+    }
 
+    const buttonReset = ()=>
+    {
+       const allButtons = [...buttons];
+
+       allButtons.forEach((btn)=>{
+           btn.enabled = true;
+           btn.color = "";
+       })
+
+       setButtons(allButtons);
+    }
   
    
 
@@ -46,7 +66,10 @@ const MarkButtons = () => {
                 </div>
                 <div className="grid col-2">
                     <button className="actionBtn">CASH</button>
-                    <button className="actionBtn">CLEAR</button>
+
+                    <button className="actionBtn" onClick={()=>{
+                        totalReset();
+                    }}>CLEAR</button>
                 </div>
         </div>
     )
