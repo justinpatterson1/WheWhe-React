@@ -17,6 +17,7 @@ button
 button:hover
 {
   border: 5px solid red;
+  cursor: pointer;
 }
 
 img
@@ -228,7 +229,7 @@ img
   padding: 20px;
 }
 
-#ticket-body > div{
+#ticket-body > div:nth-child(2){
 
   height: 20px;
   align-self: end;
@@ -236,4 +237,20 @@ img
   margin-bottom: 20px;
 }
 
+#total-div
+{
+  margin-top: 10px;
+}
 
+@media print
+{
+  #print-tic
+  {
+    display: none;
+  }
+
+  #close-tic
+  {
+    display: none;
+  }
+}

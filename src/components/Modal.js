@@ -2,14 +2,16 @@ import React,{useContext,useState} from 'react'
 import ModalContext from '../context/ModalContext'
 import CashContext from '../context/CashContext'
 import TicketContext from '../context/TicketContext'
+import ChangeContext from '../context/ChangeContext'
+import ReceivedCashContext from '../context/ReceivedCashContext'
 
 const Modal = () => {
 
     const {register,setRegister} = useContext(ModalContext);
     const {setTicket} = useContext(TicketContext);
     const {cash} = useContext(CashContext)
-    const [receivedCash,setReceivedCash] = useState(0);
-    const [change,setChange] = useState(0);
+    const {receivedCash,setReceivedCash} = useContext(ReceivedCashContext);
+    const {change,setChange} = useContext(ChangeContext);
     const [currentCash,setCurrentCash] = useState(0);
 
 

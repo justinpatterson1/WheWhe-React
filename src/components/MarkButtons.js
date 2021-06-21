@@ -68,7 +68,23 @@ const MarkButtons = () => {
                 </div>
                 <div className="grid col-2">
                     <button className="actionBtn" onClick={()=>{
-                        setRegister({visible:true})
+                        if(mark.length != 5)
+                        {
+                            alert("You need to add 5 marks")
+                           
+                        }
+
+                        if(cash === 0)
+                        {
+                            alert("Please select how much you money you want on the ticket")
+                        }
+
+                        if(mark.length ===5 && cash > 0)
+                        {
+                            setRegister({visible:true})
+                        }
+                       
+                        
                       
                     }}>CASH</button>
 

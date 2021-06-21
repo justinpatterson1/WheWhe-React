@@ -9,6 +9,8 @@ import ScreenContext from '../context/ScreenContext';
 import CashContext from '../context/CashContext';
 import TicketContext from '../context/TicketContext';
 import ModalContext from '../context/ModalContext';
+import ReceivedCashContext from '../context/ReceivedCashContext';
+import ChangeContext from '../context/ChangeContext'
 import Modal from '../components/Modal';
 import Ticket from '../components/Ticket'
 import{useState} from 'react';
@@ -16,6 +18,8 @@ import{useState} from 'react';
 
 function App() {
 
+  const [receivedCash,setReceivedCash] = useState(0);
+  const [change,setChange] = useState(0);
   const [register,setRegister] = useState({visible:false});
   const [screen,setScreen] = useState({visible:false});
   const [ticket,setTicket] = useState({visible:false});
@@ -151,6 +155,10 @@ function App() {
       <MarkContext.Provider value={{mark,setMark}}>
         <ModalContext.Provider value={{register,setRegister}}>
          <CashContext.Provider value={{cash,setCash}}>
+         <ButtonsContext.Provider value={{buttons,setButtons}}>
+           <ReceivedCashContext.Provider value={{receivedCash,setReceivedCash}}>
+              <ChangeContext.Provider value={{change,setChange}}>
+          
            <TicketContext.Provider value={{ticket,setTicket}}>
                 <Ticket/>
                 <Modal/>
@@ -161,11 +169,11 @@ function App() {
                       <ScreenContext.Provider value={{screen,setScreen}}>
                             <CashButtons/>
 
-                              <ButtonsContext.Provider value={{buttons,setButtons}}>
+                              
                       
                                           <MarkButtons/>
                                 
-                              </ButtonsContext.Provider>
+                              
 
                       </ScreenContext.Provider>
 
@@ -174,6 +182,9 @@ function App() {
                 
                   
                 </div>
+                </ChangeContext.Provider>
+                </ReceivedCashContext.Provider>
+                </ButtonsContext.Provider>
                 </CashContext.Provider>
             </ModalContext.Provider>
         </MarkContext.Provider>
