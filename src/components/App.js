@@ -7,14 +7,18 @@ import MarkContext from '../context/MarkContext';
 import ButtonsContext from '../context/ButtonsContext';
 import ScreenContext from '../context/ScreenContext';
 import CashContext from '../context/CashContext';
-import Modal from '../components/Modal';
+import TicketContext from '../context/TicketContext';
 import ModalContext from '../context/ModalContext';
+import Modal from '../components/Modal';
+import Ticket from '../components/Ticket'
 import{useState} from 'react';
 
 
 function App() {
 
+  const [register,setRegister] = useState({visible:false});
   const [screen,setScreen] = useState({visible:false});
+  const [ticket,setTicket] = useState({visible:false});
   const [cash,setCash] = useState(0);
   const [mark, setMark] = useState([]);
   const [buttons,setButtons]=useState([
@@ -145,26 +149,33 @@ function App() {
   return (
     <div id="body">
       <MarkContext.Provider value={{mark,setMark}}>
+        <ModalContext.Provider value={{register,setRegister}}>
+         <CashContext.Provider value={{cash,setCash}}>
+           <TicketContext.Provider value={{ticket,setTicket}}>
+                <Ticket/>
+                <Modal/>
+            </TicketContext.Provider>
+                <Header/>
+                <div className="grid col-3">
+                  
+                      <ScreenContext.Provider value={{screen,setScreen}}>
+                            <CashButtons/>
 
-        <Modal/>
-        <Header/>
-        <div className="grid col-3">
-          <CashContext.Provider value={{cash,setCash}}>
-              <ScreenContext.Provider value={{screen,setScreen}}>
-                    <CashButtons/>
+                              <ButtonsContext.Provider value={{buttons,setButtons}}>
+                      
+                                          <MarkButtons/>
+                                
+                              </ButtonsContext.Provider>
 
-                       <ButtonsContext.Provider value={{buttons,setButtons}}>
-              
-                                   <MarkButtons/>
-              
-                      </ButtonsContext.Provider>
+                      </ScreenContext.Provider>
 
-              </ScreenContext.Provider>
+                      <DisplayBox/>
 
-              <DisplayBox/>
-
-          </CashContext.Provider>
-        </div>
+                
+                  
+                </div>
+                </CashContext.Provider>
+            </ModalContext.Provider>
         </MarkContext.Provider>
     </div>
   );

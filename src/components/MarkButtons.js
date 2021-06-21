@@ -4,6 +4,7 @@ import Buttons from '../components/Buttons';
 import ButtonsContext from '../context/ButtonsContext'
 import ScreenContext from '../context/ScreenContext';
 import CashContext from '../context/CashContext';
+import ModalContext from '../context/ModalContext';
 
 
 
@@ -13,6 +14,7 @@ const MarkButtons = () => {
     const {buttons,setButtons} = useContext(ButtonsContext);
     const{mark,setMark} = useContext(MarkContext);
     const {cash,setCash} = useContext(CashContext);
+    const {setRegister} = useContext(ModalContext)
     
     
     const totalReset = ()=>
@@ -65,10 +67,13 @@ const MarkButtons = () => {
                     }
                 </div>
                 <div className="grid col-2">
-                    <button className="actionBtn">CASH</button>
+                    <button className="actionBtn" onClick={()=>{
+                        setRegister({visible:true})
+                      
+                    }}>CASH</button>
 
                     <button className="actionBtn" onClick={()=>{
-                        totalReset();
+                        totalReset()
                     }}>CLEAR</button>
                 </div>
         </div>

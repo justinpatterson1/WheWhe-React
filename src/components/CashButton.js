@@ -14,7 +14,7 @@ const CashButton = () => {
          cashAmount = cashAmount + parseInt(val);
 
          setCash(cashAmount);
-         alert(cash)
+         
     }
 
     return (
