@@ -164,7 +164,7 @@ function App() {
                 <Modal/>
             </TicketContext.Provider>
                 <Header/>
-                <div className="grid col-3">
+                <div id="front" className="grid col-3">
                   
                       <ScreenContext.Provider value={{screen,setScreen}}>
                             <CashButtons/>
